@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+import { Post } from "../Utils/JSONUtil";
 
 const PostEdit = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const { push } = useHistory();
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.log(title, description);
+
+    Post("http://localhost:3002/posts", {
+      title,
+      description,
+    })
+      .then(() => {
+        setTitle("");
+        setDescription("");
+        push("/posts");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
