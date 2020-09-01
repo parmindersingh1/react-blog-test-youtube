@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./index.css";
@@ -10,6 +10,7 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
+      <CSSReset />
       <Router>
         <App />
       </Router>

@@ -4,4 +4,6 @@ export const Post = (url, requestContent) => {
   return axios.post(url, requestContent);
 };
 
-const Get = (url) => {};
+export const Get = (url) => {
+  return axios.get(url);
+};

@@ -13,11 +13,13 @@
     "emotion-theming": "^10.0.27",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.4.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently 'yarn run dev-start' 'yarn run json-server'",
+    "dev-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -39,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "json-server": "^0.16.1"
   }
 }
