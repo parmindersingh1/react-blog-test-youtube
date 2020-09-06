@@ -18,7 +18,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "concurrently 'yarn run dev-start' 'yarn run json-server'",
+    "start": "concurrently  'yarn run dev-start' 'yarn run json-server' ",
     "dev-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
