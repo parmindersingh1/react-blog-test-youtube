@@ -7,3 +7,7 @@ export const Post = (url, requestContent) => {
 export const Get = (url) => {
   return axios.get(url);
 };
+
+export const Put = (url, requestContent) => {
+  return axios.put(url, requestContent);
+};
