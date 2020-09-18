@@ -12,20 +12,18 @@ import {
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Get, Put } from "../Utils/JSONUtil";
+import { useQuery } from "react-query";
 
 import PostManage from "../components/PostManage";
 
 const PostDetail = () => {
   const { postId } = useParams();
-  const [postDetail, setPostDetail] = useState(null);
+
+  const { isLoading, error, data, refetch } = useQuery("postdetail", () => {
+    return Get(`http://localhost:3002/posts/${postId}`);
+  });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  useEffect(() => {
-    Get(`http://localhost:3002/posts/${postId}`).then((response) => {
-      setPostDetail(response.data);
-    });
-  }, [postId]);
 
   const onSubmitHandler = (values) => {
     console.log(values);
@@ -33,7 +31,7 @@ const PostDetail = () => {
     Put(`http://localhost:3002/posts/${postId}`, values)
       .then(() => {
         onClose();
-        getPostDetail();
+        refetch();
       })
       .catch((err) => {
         console.log(err);
@@ -43,12 +41,12 @@ const PostDetail = () => {
 
   return (
     <div>
-      {postDetail === null ? (
+      {isLoading ? (
         <div>Loading</div>
       ) : (
         <div>
           <Button onClick={onOpen}>Edit</Button>
-          <div>{postDetail.description}</div>
+          <div>{data.data.description}</div>
 
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -58,8 +56,8 @@ const PostDetail = () => {
               <ModalBody>
                 <PostManage
                   onSubmit={onSubmitHandler}
-                  defaultTitle={postDetail.title}
-                  defaultDescription={postDetail.description}
+                  defaultTitle={data.data.title}
+                  defaultDescription={data.data.description}
                 />
               </ModalBody>
               <ModalFooter>
