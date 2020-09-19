@@ -58,6 +58,10 @@ const PostDetail = () => {
       });
   };
 
+  useEffect(() => {
+    refetch();
+  }, [postId]);
+
   return (
     <div>
       {isLoading ? (
