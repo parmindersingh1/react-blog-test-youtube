@@ -7,27 +7,9 @@ import { useQuery } from "react-query";
 import { Get } from "../Utils/JSONUtil";
 
 const PostList = () => {
-  // const [list, setList] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
   const { isLoading, error, data } = useQuery("postlist", () => {
     return Get("http://localhost:3002/posts");
   });
-
-  // const getPostList = () => {
-  //   Get("http://localhost:3002/posts")
-  //     .then((response) => {
-  //       setLoading(false);
-  //       setList(response.data);
-  //     })
-  //     .catch(() => {
-  //       setLoading(false);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getPostList();
-  // }, []);
 
   return (
     <div>

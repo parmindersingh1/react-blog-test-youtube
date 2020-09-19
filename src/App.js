@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Box } from "@chakra-ui/core";
 
 import PostList from "./pages/PostList";
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          Post List 0
+          <Redirect to="/posts" />
         </Route>
         <Route path="/posts/new">
           <PostEdit />

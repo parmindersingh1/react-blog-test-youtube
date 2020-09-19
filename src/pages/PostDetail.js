@@ -12,9 +12,18 @@ import {
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Get, Put } from "../Utils/JSONUtil";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+
+import { queryCache } from "../reactQuery";
 
 import PostManage from "../components/PostManage";
+
+const editPost = ({ postId, title, description }) => {
+  return Put(`http://localhost:3002/posts/${postId}`, {
+    title,
+    description,
+  });
+};
 
 const PostDetail = () => {
   const { postId } = useParams();
@@ -23,20 +32,30 @@ const PostDetail = () => {
     return Get(`http://localhost:3002/posts/${postId}`);
   });
 
+  const [mutate] = useMutation(editPost);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const onSubmitHandler = (values) => {
-    console.log(values);
-    // Put Request
-    Put(`http://localhost:3002/posts/${postId}`, values)
+    const { title, description } = values;
+
+    mutate({
+      postId,
+      title,
+      description,
+    })
       .then(() => {
+        // Close Modal
         onClose();
+        // refetch Detail
         refetch();
+
+        // Refetch Post List
+        queryCache.refetchQueries(["postlist"]);
       })
       .catch((err) => {
         console.log(err);
       });
-    // Modal Close
   };
 
   return (

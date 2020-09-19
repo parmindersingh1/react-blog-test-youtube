@@ -10,20 +10,28 @@ import {
   Textarea,
 } from "@chakra-ui/core";
 import { useForm, Controller } from "react-hook-form";
+import { useMutation } from "react-query";
+
 import { Post } from "../Utils/JSONUtil";
+
+const createPost = ({ title, description }) => {
+  return Post("http://localhost:3002/posts", {
+    title,
+    description,
+  });
+};
 
 const PostEdit = () => {
   const { push } = useHistory();
+
+  const [mutate] = useMutation(createPost);
 
   const { control, handleSubmit, errors } = useForm();
 
   const onSubmitHandler = (value) => {
     const { title, description } = value;
 
-    Post("http://localhost:3002/posts", {
-      title,
-      description,
-    })
+    mutate({ title, description })
       .then(() => {
         push("/posts");
       })
@@ -54,7 +62,7 @@ const PostEdit = () => {
                 message: "minimum length is 3",
               },
               maxLength: {
-                value: 10,
+                value: 20,
                 message: "maximum length is 10",
               },
             }}
