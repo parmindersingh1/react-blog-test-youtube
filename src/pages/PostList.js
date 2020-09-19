@@ -1,6 +1,6 @@
-import { ListItem, List, ListIcon } from "@chakra-ui/core";
+import { ListItem, List, Link, Box } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link as Routerlink } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
 
@@ -12,21 +12,28 @@ const PostList = () => {
   });
 
   return (
-    <div>
+    <Box w="20%">
       {isLoading ? (
         "Loading.."
       ) : (
         <List>
           {data.data.map((listItem) => {
             return (
-              <ListItem key={listItem.id}>
-                <Link to={`/posts/${listItem.id}`}>{listItem.title}</Link>
+              <ListItem border={"1px solid #ccc"} key={listItem.id}>
+                <Link
+                  padding={".8rem"}
+                  display="flex"
+                  as={Routerlink}
+                  to={`/posts/${listItem.id}`}
+                >
+                  {listItem.title}
+                </Link>
               </ListItem>
             );
           })}
         </List>
       )}
-    </div>
+    </Box>
   );
 };
 

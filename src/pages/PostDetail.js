@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Modal,
   ModalBody,
@@ -63,19 +64,21 @@ const PostDetail = () => {
   }, [postId]);
 
   return (
-    <div>
+    <Box w="80%" marginTop=".5rem">
       {isLoading ? (
         <div>Loading</div>
       ) : (
-        <div>
-          <Button onClick={onOpen}>Edit</Button>
-          <div>{data.data.description}</div>
+        <>
+          <Box w="100%" textAlign="right">
+            <Button onClick={onOpen}>Edit</Button>
+          </Box>
+          <Box marginLeft={".5rem"}>{data.data.description}</Box>
 
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-              <ModalCloseButton />
               <ModalHeader>Post Manage</ModalHeader>
+              <ModalCloseButton />
               <ModalBody>
                 <PostManage
                   onSubmit={onSubmitHandler}
@@ -88,9 +91,9 @@ const PostDetail = () => {
               </ModalFooter>
             </ModalContent>
           </Modal>
-        </div>
+        </>
       )}
-    </div>
+    </Box>
   );
 };
 

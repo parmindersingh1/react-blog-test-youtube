@@ -74,7 +74,7 @@ const PostManage = ({
 
       <div>
         <Button marginTop="2rem" variantColor="green" type="submit">
-          Add Blog
+          {defaultTitle !== "" ? "Edit Blog" : "Add Blog"}
         </Button>
       </div>
     </form>
