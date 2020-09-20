@@ -1,6 +1,6 @@
-import { ListItem, List, Link, Box } from "@chakra-ui/core";
+import { ListItem, List, Box, Link } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link as Routerlink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
 
@@ -19,11 +19,11 @@ const PostList = () => {
         <List>
           {data.data.map((listItem) => {
             return (
-              <ListItem border={"1px solid #ccc"} key={listItem.id}>
+              <ListItem border="1px solid #ccc" key={listItem.id}>
                 <Link
-                  padding={".8rem"}
+                  padding=".8rem"
                   display="flex"
-                  as={Routerlink}
+                  as={RouterLink}
                   to={`/posts/${listItem.id}`}
                 >
                   {listItem.title}

@@ -59,16 +59,20 @@ const PostDetail = () => {
       });
   };
 
+  useEffect(() => {
+    refetch();
+  }, [postId]);
+
   return (
-    <Box w="80%" marginTop=".5rem">
+    <Box w="80%">
       {isLoading ? (
         <div>Loading</div>
       ) : (
         <>
-          <Box w="100%" textAlign="right">
+          <Box display="flex" justifyContent="flex-end">
             <Button onClick={onOpen}>Edit</Button>
           </Box>
-          <Box marginLeft={".5rem"}>{data.data.description}</Box>
+          <Box marginLeft=".3rem">{data.data.description}</Box>
 
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

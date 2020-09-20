@@ -35,8 +35,8 @@ const PostManage = ({
               message: "minimum length is 3",
             },
             maxLength: {
-              value: 10,
-              message: "maximum length is 10",
+              value: 20,
+              message: "maximum length is 20",
             },
           }}
         />
@@ -74,7 +74,7 @@ const PostManage = ({
 
       <div>
         <Button marginTop="2rem" variantColor="green" type="submit">
-          {defaultTitle !== "" ? "Edit Blog" : "Add Blog"}
+          {defaultTitle ? "Edit Blog" : "Add Blog"}
         </Button>
       </div>
     </form>
