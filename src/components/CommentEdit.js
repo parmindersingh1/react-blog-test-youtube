@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/core";
 import React, { useState } from "react";
 import { useMutation } from "react-query";
+import { queryCache } from "../reactQuery";
 import { Post } from "../Utils/JSONUtil";
 
 const createComment = ({ content, postId }) => {
@@ -18,6 +19,8 @@ const CommentEdit = ({ postId }) => {
 
     mutate({ content, postId }).then(() => {
       setContent("");
+
+      queryCache.refetchQueries(["commentlist"]);
     });
 
     // Post API Call

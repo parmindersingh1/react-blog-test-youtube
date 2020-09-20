@@ -41,6 +41,16 @@
       "content": "new comment",
       "postId": "2",
       "id": 2
+    },
+    {
+      "content": "comment of post 6",
+      "postId": "6",
+      "id": 3
+    },
+    {
+      "content": "comment of post 6 1",
+      "postId": "6",
+      "id": 4
     }
   ]
 }

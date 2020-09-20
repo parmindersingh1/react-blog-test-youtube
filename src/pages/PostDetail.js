@@ -78,7 +78,7 @@ const PostDetail = () => {
             {data.data.description}
           </Box>
 
-          <CommentList />
+          <CommentList postId={postId} />
           <CommentEdit postId={postId} />
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
