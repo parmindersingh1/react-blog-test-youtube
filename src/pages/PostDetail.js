@@ -18,6 +18,8 @@ import { useMutation, useQuery } from "react-query";
 import { queryCache } from "../reactQuery";
 
 import PostManage from "../components/PostManage";
+import CommentEdit from "../components/CommentEdit";
+import CommentList from "../components/CommentList";
 
 const editPost = ({ postId, title, description }) => {
   return Put(`http://localhost:3002/posts/${postId}`, {
@@ -72,8 +74,12 @@ const PostDetail = () => {
           <Box display="flex" justifyContent="flex-end">
             <Button onClick={onOpen}>Edit</Button>
           </Box>
-          <Box marginLeft=".3rem">{data.data.description}</Box>
+          <Box marginLeft=".3rem" minHeight="300px">
+            {data.data.description}
+          </Box>
 
+          <CommentList />
+          <CommentEdit postId={postId} />
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>

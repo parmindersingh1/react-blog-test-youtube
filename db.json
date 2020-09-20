@@ -31,5 +31,16 @@
       "id": 6
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "content": "new comment",
+      "postId": "3",
+      "id": 1
+    },
+    {
+      "content": "new comment",
+      "postId": "2",
+      "id": 2
+    }
+  ]
 }
