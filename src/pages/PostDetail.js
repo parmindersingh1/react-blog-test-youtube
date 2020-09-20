@@ -59,10 +59,6 @@ const PostDetail = () => {
       });
   };
 
-  useEffect(() => {
-    refetch();
-  }, [postId]);
-
   return (
     <Box w="80%" marginTop=".5rem">
       {isLoading ? (
