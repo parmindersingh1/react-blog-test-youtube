@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReactQueryCacheProvider } from "react-query";
 
@@ -12,12 +12,14 @@ import { queryCache } from "./reactQuery";
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <CSSReset />
-      <Router>
-        <ReactQueryCacheProvider queryCache={queryCache}>
-          <App />
-        </ReactQueryCacheProvider>
-      </Router>
+      <ColorModeProvider>
+        <CSSReset />
+        <Router>
+          <ReactQueryCacheProvider queryCache={queryCache}>
+            <App />
+          </ReactQueryCacheProvider>
+        </Router>
+      </ColorModeProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

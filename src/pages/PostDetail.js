@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -8,9 +9,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useColorMode,
   useDisclosure,
 } from "@chakra-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Get, Put } from "../Utils/JSONUtil";
 import { useMutation, useQuery } from "react-query";
@@ -66,15 +68,15 @@ const PostDetail = () => {
   }, [postId]);
 
   return (
-    <Box w="80%">
+    <Box w="100%">
       {isLoading ? (
         <div>Loading</div>
       ) : (
         <>
           <Box display="flex" justifyContent="flex-end">
-            <Button onClick={onOpen}>Edit</Button>
+            <IconButton marginTop=".6rem" icon="edit" onClick={onOpen} />
           </Box>
-          <Box marginLeft=".3rem" minHeight="300px">
+          <Box marginLeft=".3rem" marginTop="1rem" minHeight="300px">
             {data.data.description}
           </Box>
 
