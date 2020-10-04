@@ -12,6 +12,8 @@ import {
   Button,
   DrawerHeader,
   Input,
+  useColorMode,
+  useTheme,
 } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -24,6 +26,9 @@ const PostList = ({ isDrawerOpen, closeDrawer }) => {
   const { isLoading, error, data } = useQuery("postlist", () => {
     return Get("http://localhost:3002/posts");
   });
+
+  const { colorMode } = useColorMode();
+  const theme = useTheme();
 
   return (
     <Box
@@ -42,7 +47,11 @@ const PostList = ({ isDrawerOpen, closeDrawer }) => {
             md: "block",
           }}
           h="100%"
-          borderRight="1px solid #ccc"
+          borderRight={
+            colorMode === "dark"
+              ? `1px solid ${theme.colors.gray["700"]}`
+              : "1px solid #ccc"
+          }
         >
           {data.data.map((listItem) => {
             return (

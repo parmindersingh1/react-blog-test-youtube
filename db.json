@@ -51,6 +51,11 @@
       "content": "comment of post 6 1",
       "postId": "6",
       "id": 4
+    },
+    {
+      "content": "",
+      "postId": "6",
+      "id": 5
     }
   ]
 }

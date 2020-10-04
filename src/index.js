@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
+import {
+  ThemeProvider,
+  CSSReset,
+  ColorModeProvider,
+  theme,
+} from "@chakra-ui/core";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReactQueryCacheProvider } from "react-query";
 
@@ -9,9 +14,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { queryCache } from "./reactQuery";
 
+const defaultTheme = {
+  ...theme,
+};
+
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ThemeProvider theme={defaultTheme}>
       <ColorModeProvider>
         <CSSReset />
         <Router>

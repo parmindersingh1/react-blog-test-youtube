@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Box, IconButton, useDisclosure } from "@chakra-ui/core";
+import {
+  Box,
+  IconButton,
+  useColorMode,
+  useDisclosure,
+  useTheme,
+} from "@chakra-ui/core";
 import { MdDehaze } from "react-icons/md";
 
 import PostList from "./pages/PostList";
@@ -9,6 +15,10 @@ import PostDetail from "./pages/PostDetail";
 
 function App() {
   const { isOpen, onClose, onOpen, onToggle } = useDisclosure();
+
+  const { colorMode, toggleColorMode } = useColorMode();
+  const theme = useTheme();
+
   return (
     <Box h="100%">
       <Switch>
@@ -20,7 +30,20 @@ function App() {
         </Route>
 
         <Box h="100%">
-          <Box padding=".4rem" minHeight="40px" borderBottom="1px solid #ccc">
+          <Box
+            d="flex"
+            padding=".4rem"
+            minHeight="40px"
+            borderBottom={
+              colorMode === "dark"
+                ? `1px solid ${theme.colors.gray["700"]}`
+                : "1px solid #ccc"
+            }
+            justifyContent={{
+              sm: "space-between",
+              md: "flex-end",
+            }}
+          >
             <IconButton
               display={{
                 sm: "block",
@@ -29,6 +52,7 @@ function App() {
               onClick={onToggle}
               icon={MdDehaze}
             />
+            <IconButton icon="moon" onClick={toggleColorMode} />
           </Box>
           <Box
             maxW={{
