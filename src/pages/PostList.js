@@ -39,7 +39,7 @@ const PostList = ({ isDrawerOpen, closeDrawer }) => {
       h="100%"
     >
       {isLoading ? (
-        "Loading.."
+        <div data-testid="loading-text">Loading..</div>
       ) : (
         <List
           d={{
