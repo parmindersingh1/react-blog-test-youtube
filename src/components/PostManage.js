@@ -24,6 +24,7 @@ const PostManage = ({
           defaultValue={defaultTitle}
           control={control}
           name="title"
+          id="title"
           as={Input}
           rules={{
             required: {
@@ -46,11 +47,12 @@ const PostManage = ({
       </FormControl>
 
       <FormControl isInvalid={errors.description}>
-        <FormLabel htmlFor="Description">Description</FormLabel>
+        <FormLabel htmlFor="description">Description</FormLabel>
         <Controller
           defaultValue={defaultDescription}
           control={control}
           name="description"
+          id="description"
           as={Textarea}
           rules={{
             required: {

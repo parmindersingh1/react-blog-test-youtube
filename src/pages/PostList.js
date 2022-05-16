@@ -29,7 +29,8 @@ const PostList = ({ isDrawerOpen, closeDrawer }) => {
 
   const { colorMode } = useColorMode();
   const theme = useTheme();
-
+  // console.log("Hello world");
+  // console.log(data)
   return (
     <Box
       w={{
@@ -55,7 +56,7 @@ const PostList = ({ isDrawerOpen, closeDrawer }) => {
         >
           {data.data.map((listItem) => {
             return (
-              <ListItem key={listItem.id}>
+              <ListItem data-testid="list-item" key={listItem.id}>
                 <Link
                   padding=".8rem"
                   display="flex"
